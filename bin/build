@@ -38,6 +38,7 @@ function do_install(){
 
     echo "==> Installing Erlang ${ERL_VERSION}.."
     yum install erlang
+    echo "==> where is erl "
 
     echo "==> Installing Elixir ${ELIXIR_VERSION}"
     wget --no-verbose -P /tmp/ "https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip"
