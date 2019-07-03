@@ -16,7 +16,7 @@ export LC_CTYPE=en_US.UTF-8
 
 function do_install(){
     mkdir -p /tmp
-
+    yum -y install openssh-clients
     echo "*******************************************"
     echo "GET CREDS"
     echo "*******************************************"
