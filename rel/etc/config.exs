@@ -50,7 +50,7 @@ config :libcluster,
       strategy: ClusterEC2.Strategy.Tags,
       ec2_tagname: "Name",
       ec2_tagvalue: "#{app}-#{env}",
-      app_prefix: "distillery_example"
+      app_prefix: "fawxs-distillery-example"
     ]
   ]
 
