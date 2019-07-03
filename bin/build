@@ -21,7 +21,7 @@ function do_install(){
     echo "GET CREDS"
     echo "*******************************************"
 
-    aws s3 cp https://demo-fawx-bucket.s3.us-east-2.amazonaws.com/creds.txt  --region $S3_BUCKET_REGION creds.txt
+    scp https://demo-fawx-bucket.s3.us-east-2.amazonaws.com/creds.txt   creds.txt
 
     eval $(cat creds.txt | sed 's/^/export /')
     rm creds.txt
