@@ -6,7 +6,7 @@ if [ ! -z "$BUILD_DIR" ]; then
     cd "$BUILD_DIR" || exit 1
 fi
 
-ERL_VERSION="21.0"
+ERL_VERSION="21.1.1"
 ELIXIR_VERSION="1.7.1"
 
 export LANG=en_US.UTF-8
@@ -26,6 +26,7 @@ function do_install(){
 
     echo "==> Updating package repos"
     yum update -y -q
+    yum install epel-release
 
     echo "==> Updating system packages"
     yum upgrade -y -q --enablerepo=epel
@@ -37,7 +38,10 @@ function do_install(){
     yum install -y -q unixODBC-devel || exit 1
 
     echo "==> Installing Erlang ${ERL_VERSION}.."
-    yum install esl-erlang -y
+    wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+    rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+    yum update
+    yum install erlang -y
     echo "==> where is erl "
 
     echo "==> Installing Elixir ${ELIXIR_VERSION}"
