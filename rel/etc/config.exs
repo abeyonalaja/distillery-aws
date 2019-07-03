@@ -35,6 +35,7 @@ config :distillery_example, Example.Repo,
   password: db_password,
   database: System.get_env("DATABASE_NAME"),
   hostname: System.get_env("DATABASE_HOST"),
+  show_sensitive_data_on_connection_error: true,
   pool_size: 15
 
 # Set configuration for Phoenix endpoint
