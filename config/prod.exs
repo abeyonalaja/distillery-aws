@@ -1,5 +1,10 @@
 use Mix.Config
+app = System.get_env("APPLICATION_NAME")
+env = System.get_env("ENVIRONMENT_NAME")
+region = System.get_env("AWS_REGION")
 
+# Locate awscli
+aws = System.find_executable("aws")
 config :distillery_example, ExampleWeb.Endpoint,
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json",
