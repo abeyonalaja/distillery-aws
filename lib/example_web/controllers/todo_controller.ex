@@ -5,6 +5,7 @@ defmodule ExampleWeb.TodoController do
     case Example.Todo.all() do
       {:ok, todos} ->
         render(conn, "index.html", todos: todos)
+
       {:error, reason} ->
         conn
         |> put_resp_content_type("text/plain")
@@ -21,8 +22,9 @@ defmodule ExampleWeb.TodoController do
     case Example.Todo.all() do
       {:ok, todos} ->
         ok(conn, todos)
+
       {:error, reason} ->
-        error(conn, "#{inspect reason}")
+        error(conn, "#{inspect(reason)}")
     end
   rescue
     err ->
@@ -32,11 +34,11 @@ defmodule ExampleWeb.TodoController do
   def create(conn, params) do
     with changeset = Example.Todo.changeset(%Example.Todo{}, params),
          {:ok, created} <- Example.Todo.create(changeset) do
-           IO.inspect created, label: :created
+      IO.inspect(created, label: :created)
       ok(conn, created)
     else
       {:error, reason} ->
-        error(conn, "#{inspect reason}")
+        error(conn, "#{inspect(reason)}")
     end
   rescue
     err ->
@@ -47,8 +49,9 @@ defmodule ExampleWeb.TodoController do
     case Example.Todo.update(params) do
       {:ok, _} ->
         send_resp(conn, 200, "")
+
       {:error, reason} ->
-        error(conn, "#{inspect reason}")
+        error(conn, "#{inspect(reason)}")
     end
   rescue
     err ->
@@ -59,8 +62,9 @@ defmodule ExampleWeb.TodoController do
     case Example.Todo.delete(id) do
       :ok ->
         send_resp(conn, 200, "")
+
       {:error, reason} ->
-        error(conn, "#{inspect reason}")
+        error(conn, "#{inspect(reason)}")
     end
   rescue
     err ->
@@ -71,8 +75,9 @@ defmodule ExampleWeb.TodoController do
     case Example.Todo.delete_all() do
       :ok ->
         send_resp(conn, 200, "")
+
       {:error, reason} ->
-        error(conn, "#{inspect reason}")
+        error(conn, "#{inspect(reason)}")
     end
   rescue
     err ->
@@ -85,6 +90,7 @@ defmodule ExampleWeb.TodoController do
 
   defp error(conn, reason) do
     err = %{message: reason}
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(400, Jason.encode!(err))

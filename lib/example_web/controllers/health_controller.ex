@@ -13,15 +13,16 @@ defmodule ExampleWeb.HealthController do
       failed(conn, Exception.message(err))
   end
 
-  defp healthy(conn) do 
+  defp healthy(conn) do
     status = %{status: :ok, nodes: Node.list()}
-    Logger.info "Health check good: #{inspect status}"
+    Logger.info("Health check good: #{inspect(status)}")
     json(conn, status)
   end
 
   defp degraded(conn, services) do
     status = %{status: :degraded, services: services, nodes: Node.list()}
-    Logger.warn "Health check degraded: #{inspect status}"
+    Logger.warn("Health check degraded: #{inspect(status)}")
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(500, Jason.encode!(status))
@@ -29,7 +30,8 @@ defmodule ExampleWeb.HealthController do
 
   defp failed(conn, msg) do
     status = %{status: :error, message: msg}
-    Logger.error "Health check failed: #{msg}"
+    Logger.error("Health check failed: #{msg}")
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(500, Jason.encode!(status))

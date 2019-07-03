@@ -1,7 +1,7 @@
 defmodule ExampleWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :distillery_example
 
-  #socket "/socket", ExampleWeb.UserSocket,
+  # socket "/socket", ExampleWeb.UserSocket,
   #  websocket: true, # or list of options
   #  longpoll: [check_origin: ...]
 
@@ -10,7 +10,9 @@ defmodule ExampleWeb.Endpoint do
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :distillery_example, gzip: false,
+    at: "/",
+    from: :distillery_example,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the

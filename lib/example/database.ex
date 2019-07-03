@@ -11,8 +11,10 @@ defmodule Example.Database do
     case :ets.lookup(__MODULE__, :up) do
       [] ->
         false
+
       [{_, nil}] ->
         false
+
       [{_, pid}] when is_pid(pid) ->
         Process.alive?(pid)
     end
@@ -38,12 +40,14 @@ defmodule Example.Database do
   def handle_info(:check, state) do
     {:noreply, check(state)}
   end
+
   def handle_info({:EXIT, parent, reason}, %{parent: parent} = state) do
     {:stop, reason, state}
   end
+
   def handle_info({:DOWN, ref, _type, _pid, reason}, %{ref: ref} = state) do
     # We lost the repo for some reason
-    Logger.warn "Example.Repo has crashed: #{inspect reason}"
+    Logger.warn("Example.Repo has crashed: #{inspect(reason)}")
     # Clear the existing status
     :ets.delete(__MODULE__, :up)
     # Start polling again
@@ -56,6 +60,7 @@ defmodule Example.Database do
     Process.send_after(self(), :check, 5_000)
     %{state | pid: pid}
   end
+
   defp check(%{pid: pid} = state) when is_pid(pid) do
     Process.send_after(self(), :check, 5_000)
     state
@@ -65,10 +70,12 @@ defmodule Example.Database do
     case Example.Repo.start_link([]) do
       {:ok, pid} ->
         pid
+
       {:error, {:already_started, _pid}} ->
         raise "Wasn't expecting Example.Repo to be started but it was!"
+
       {:error, reason} ->
-        Logger.warn "Unable to start Example.Repo: #{inspect reason}"
+        Logger.warn("Unable to start Example.Repo: #{inspect(reason)}")
         nil
     end
   end

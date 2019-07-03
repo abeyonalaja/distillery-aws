@@ -46,6 +46,7 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 {username, 0} = System.cmd("whoami", [])
+
 config :distillery_example, Example.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: String.trim(username),

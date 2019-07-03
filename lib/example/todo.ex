@@ -2,13 +2,13 @@ defmodule Example.Todo do
   use Ecto.Schema
 
   schema "todos" do
-    field :title, :string
-    field :completed, :boolean
+    field(:title, :string)
+    field(:completed, :boolean)
 
-    timestamps [
+    timestamps(
       type: :naive_datetime,
       autogenerate: {NaiveDateTime, :utc_now, []}
-    ]
+    )
   end
 
   @doc """
@@ -16,9 +16,11 @@ defmodule Example.Todo do
   """
   def create(%Ecto.Changeset{} = changeset) do
     result = Example.Repo.insert(changeset)
+
     case result do
       {:ok, todo} ->
         {:ok, to_result(todo)}
+
       {:error, cs} ->
         to_error(cs)
     end
@@ -32,9 +34,11 @@ defmodule Example.Todo do
       %__MODULE__{}
       |> changeset(params)
       |> Example.Repo.update()
+
     case result do
       {:ok, todo} ->
         {:ok, to_result(todo)}
+
       {:error, cs} ->
         to_error(cs)
     end
@@ -50,6 +54,7 @@ defmodule Example.Todo do
     else
       nil ->
         :ok
+
       {:error, cs} ->
         to_error(cs)
     end
@@ -69,10 +74,11 @@ defmodule Example.Todo do
   @doc """
   Returns all Todos from the database
   """
-  def all() do 
+  def all() do
     todos =
       Example.Repo.all(__MODULE__)
       |> Enum.map(&to_result/1)
+
     {:ok, todos}
   rescue
     err in [Ecto.QueryError] ->
@@ -96,6 +102,7 @@ defmodule Example.Todo do
           String.replace(acc, "%{#{key}}", to_string(value))
         end)
       end)
+
     {:error, errs}
   end
 

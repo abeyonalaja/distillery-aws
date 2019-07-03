@@ -4,10 +4,21 @@ defmodule Example.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
+    #    children = [
+    #      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
+    #      supervisor(Example.Database, []),
+    #      supervisor(ExampleWeb.Endpoint, []),
+    #    ]
+
     children = [
-      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
+      # Start the Ecto repository
+      #      Rumbl.Repo,
+      # Start the endpoint when the application starts
+      #      RumblWeb.Endpoint
+      # Starts a worker by calling: Rumbl.Worker.start_link(arg)
+      # {Rumbl.Worker, arg},
       supervisor(Example.Database, []),
-      supervisor(ExampleWeb.Endpoint, []),
+      supervisor(ExampleWeb.Endpoint, [])
     ]
 
     opts = [strategy: :one_for_one, name: Example.Supervisor]

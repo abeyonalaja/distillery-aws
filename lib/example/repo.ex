@@ -10,6 +10,7 @@ defmodule Example.Repo do
       opts
       |> Keyword.put(:url, System.get_env("DATABASE_URL"))
       |> Keyword.put(:hostname, System.get_env("DATABASE_HOST"))
+
     {:ok, opts}
   end
 end
