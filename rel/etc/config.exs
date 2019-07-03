@@ -35,7 +35,6 @@ config :distillery_example, Example.Repo,
   password: db_password,
   database: System.get_env("DATABASE_NAME"),
   hostname: System.get_env("DATABASE_HOST"),
-  show_sensitive_data_on_connection_error: true,
   pool_size: 15
 
 # Set configuration for Phoenix endpoint
@@ -51,7 +50,7 @@ config :libcluster,
       strategy: ClusterEC2.Strategy.Tags,
       ec2_tagname: "Name",
       ec2_tagvalue: "#{app}-#{env}",
-      app_prefix: "distillery-example"
+      app_prefix: "distillery_example"
     ]
   ]
 
