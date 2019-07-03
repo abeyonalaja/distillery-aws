@@ -49,7 +49,8 @@ config :phoenix, :stacktrace_depth, 20
 
 config :distillery_example, Example.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: String.trim(username),
+  username: "postgres",
+  password: "postgres",
   database: "distillery_example_dev",
   hostname: "localhost",
   pool_size: 10
