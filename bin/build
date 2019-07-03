@@ -37,7 +37,7 @@ function do_install(){
     yum install -y -q unixODBC-devel || exit 1
 
     echo "==> Installing Erlang ${ERL_VERSION}.."
-    yum install erlang
+    yum install erlang -y
     echo "==> where is erl "
 
     echo "==> Installing Elixir ${ELIXIR_VERSION}"
