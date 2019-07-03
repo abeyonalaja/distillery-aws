@@ -37,8 +37,7 @@ function do_install(){
     yum install -y -q unixODBC-devel || exit 1
 
     echo "==> Installing Erlang ${ERL_VERSION}.."
-    wget --no-verbose -P /tmp/ "https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm"
-    rpm -Uvh "/tmp/erlang-solutions-1.0-1.noarch.rpm"
+    yum install erlang
 
     echo "==> Installing Elixir ${ELIXIR_VERSION}"
     wget --no-verbose -P /tmp/ "https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip"
