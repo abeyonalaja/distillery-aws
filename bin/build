@@ -16,15 +16,6 @@ export LC_CTYPE=en_US.UTF-8
 
 function do_install(){
     mkdir -p /tmp
-    yum -y install openssh-clients
-    echo "*******************************************"
-    echo "GET CREDS"
-    echo "*******************************************"
-
-    scp https://demo-fawx-bucket.s3.us-east-2.amazonaws.com/creds.txt   creds.txt
-
-    eval $(cat creds.txt | sed 's/^/export /')
-    rm creds.txt
 
     echo "==> Installing wget, unzip, make"
     yum install -y -q wget unzip make
