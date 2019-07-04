@@ -3,6 +3,12 @@
 set -e
 
 # systemctl enable distillery-example.service
+
+cd /opt/app || exit 1
+source /etc/network-environment
+set -o allexport
+source ./etc/environment
+set +o allexport
 bin/distillery_example start
 
 exit 0
