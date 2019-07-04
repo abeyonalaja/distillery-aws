@@ -776,7 +776,7 @@ Resources:
             /opt/app/etc/environment:
               content: !Sub |
                 HOME=/opt/app
-                REPLACE_OS_VARS=true
+                REPLACE_OS_VARS=false
                 APPLICATION_NAME=${ApplicationName}
                 ENVIRONMENT_NAME=${EnvironmentName}
                 DATABASE_HOST=${DatabaseInternalDNS}
