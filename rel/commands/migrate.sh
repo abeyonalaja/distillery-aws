@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-release_ctl eval --mfa "Example.ReleaseTasks.migrate/1" --argv -- "$@"
+exec bin/start foreground
+# release_ctl eval --mfa "Example.ReleaseTasks.migrate/1" --argv -- "$@"
