@@ -2,6 +2,7 @@
 
 set -e
 
-systemctl enable distillery-example.service
+# systemctl enable distillery-example.service
+bin/distillery_example start
 
 exit 0
