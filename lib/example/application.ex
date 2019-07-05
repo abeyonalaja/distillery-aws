@@ -7,7 +7,7 @@ defmodule Example.Application do
     children = [
       #          supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
 #      {Cluster.Supervisor, [topologies, [name: MyApp.ClusterSupervisor]]},
-      supervisor(Example.ClusterSupervisor, []),
+#      supervisor(Example.ClusterSupervisor, []),
       supervisor(Example.Database, []),
       supervisor(ExampleWeb.Endpoint, [])
     ]
