@@ -2,6 +2,6 @@
 
 set -e
 
-systemctl enable distillery-example.service
+sudo systemctl enable distillery-example.service
 
 exit 0
