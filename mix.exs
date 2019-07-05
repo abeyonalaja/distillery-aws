@@ -42,7 +42,7 @@ defmodule Example.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
-      {:distillery, "~> 2.0"},
+      {:distillery, "~> 2.0",  runtime: false},
       {:libcluster, "~> 3.0"},
       {:libcluster_ec2, "~> 0.4"}
     ]
