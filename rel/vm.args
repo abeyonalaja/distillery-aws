@@ -1,6 +1,6 @@
 # Set node name dynamically
 # DEFAULT_IPV4 is exported in /etc/network-environment by setup-network-environment
--name <%= distillery_example %>@${HOSTNAME}
+-name <%= release.name %>@${HOSTNAME}
 
 # Use cookie from vm.args
 -setcookie <%= release.profile.cookie %>
